@@ -14,6 +14,8 @@
 # set creation_date on the resource (or via a module/locals merge) itself.
 
 resource_policy "*" "creation_date_tag_required" {
+  enforcement_level = "mandatory"
+  
   # core::try() falls back to "aws" when meta.provider_type is unavailable (tfpolicy test mocks).
   # The "tags" probe returns the sentinel only when the attribute is absent from the schema;
   # a taggable resource with tags = null is still evaluated (and fails below).
